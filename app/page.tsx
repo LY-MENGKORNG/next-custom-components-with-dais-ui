@@ -1,15 +1,23 @@
 "use client"
 
-import { CustomBtn, CustomDropdown, CustomTable } from "@/components"
-import { DROPDOWN_ITEMS, USERS } from "@/constants"
-import Image from "next/image"
+import {
+  CustomBtn,
+  CustomDropdown,
+  Modal,
+  Toast,
+  Badge,
+  Select,
+  CustomCard,
+  Skeleton,
+} from "@components"
+import { DROPDOWN_ITEMS } from "@/constants"
 import { useState } from "react"
 
 export default function Home() {
   const [loading, setLoading] = useState<boolean>(false)
   return (
-    <div className='flex flex-col w-full items-center justify-center'>
-      <div className='flex gap-5 items-center'>
+    <div className='flex flex-col w-full items-center justify-center gap-5'>
+      <section className='flex gap-5 items-center justify-center rounded-md ring-[1px] p-2 w-full ring-green-300'>
         <CustomBtn
           title='Click me!'
           loading={loading}
@@ -27,64 +35,46 @@ export default function Home() {
           title='Dropdown'
           items={DROPDOWN_ITEMS}
         />
-      </div>
-
-      <div className='mt-5'>
-        <CustomTable
-          cols={["Name", "Job", "Favorites", " "]}
-          rows={USERS}>
-          {USERS.map(
-            ({ name, pic, country, job, subJob, favorite, checked }, index) => (
-              <tr key={index}>
-                <th>
-                  <input
-                    type='checkbox'
-                    placeholder='checkbox'
-                    className='checkbox'
-                    onChange={() => {
-                      checked = !checked
-                    }}
-                    onClick={() => {
-                      checked = !checked
-                    }}
-                    checked={checked}
-                  />
-                </th>
-                <td>
-                  <div className='flex items-center gap-3'>
-                    <div className='avatar'>
-                      <div className='mask mask-squircle h-12 w-12'>
-                        <Image
-                          src={pic ? pic : "/2@94.webp"}
-                          alt='Avatar Tailwind CSS Component'
-                          width={75}
-                          height={75}
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <div className='font-bold'>{name}</div>
-                      <div className='text-sm opacity-50'>{country}</div>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  {job}
-                  <br />
-                  <span className='badge badge-ghost badge-sm'>{subJob}</span>
-                </td>
-                <td>{favorite}</td>
-                <td>
-                  <CustomBtn
-                    title='detail'
-                    size='btn-sm'
-                  />
-                </td>
-              </tr>
-            )
-          )}
-        </CustomTable>
-      </div>
+        <Modal
+          id='modal_1'
+          buttonText='Open modal'>
+          <h1>Hello world</h1>
+        </Modal>
+        <Badge
+          color='badge-primary'
+          title='In Progress'
+        />
+        <Toast
+          title='🤌😒'
+          type='warn'
+          message='You have successfully confirmed'
+          position={["top", "end"]}
+        />
+      </section>
+      <section className='flex gap-5 items-center justify-center rounded-md ring-[1px] p-2 w-full ring-green-300'>
+        <Select
+          color='select-primary'
+          // title="Please select you country"
+          items={[
+            { label: "CAMBODIA", value: "cambodia" },
+            { label: "AMERICAN", value: "american" },
+          ]}
+        />
+      </section>
+      <section className='flex gap-5 items-center justify-center rounded-md ring-[1px] p-2 w-full ring-green-300'>
+        <CustomCard
+          title='Nike Air Zoom Pegasus 360'
+          description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel ultricies neque.
+            Quisque non eleifend dolor.'>
+          <Badge
+            title='NEW'
+            color='badge-secondary'
+          />
+        </CustomCard>
+      </section>
+      <section className='flex gap-5 items-center justify-center rounded-md ring-[1px] p-2 w-full ring-green-300'>
+        <Skeleton.CardSkeleton />
+      </section>
     </div>
   )
 }

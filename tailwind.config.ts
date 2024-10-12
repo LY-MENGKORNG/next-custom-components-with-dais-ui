@@ -19,7 +19,7 @@ const config: Config = {
     daisyui,
   ],
   daisyui: {
-    themes: ["light", "dark", "cupcake", "auttumn", "garden", "winter", "coffee"],
+    themes: ["light", "dark", "cupcake", "auttumn", "garden", "winter", "coffee", "night"],
   },
 }
 export default config

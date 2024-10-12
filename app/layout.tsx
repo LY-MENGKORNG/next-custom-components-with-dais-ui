@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
 import "./globals.css"
+import { Breadcrumb } from "@components"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,14 +27,18 @@ export default function RootLayout({
   return (
     <html
       lang='en'
-      data-theme='garden'>
+      data-theme='night'>
       <body
         className={`${geistSans.variable} ${geistMono.variable} flex antialiased min-h-screen p-3 lg:px-20 md:10`}>
         <div className='mockup-browser border-base-300 border w-full flex flex-col shadow-md'>
           <div className='mockup-browser-toolbar'>
             <div className='input select-none'>https://google.com</div>
           </div>
-          <div className='border-base-300 flex justify-center border-t px-4 py-16 w-full flex-1'>
+          <div className='border-base-300 flex flex-col border-t px-4 py-16 w-full flex-1'>
+            <section className='flex flex-col gap-3 rounded-md ring-[1px] p-2 w-full ring-green-300 mb-5'>
+              <h1 className="text-xl">Breadcrumb</h1>
+              <Breadcrumb />
+            </section>
             {children}
           </div>
         </div>

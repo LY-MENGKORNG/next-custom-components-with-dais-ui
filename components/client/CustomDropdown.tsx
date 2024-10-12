@@ -1,5 +1,6 @@
 "use client"
-import { CustomDropdownProps } from "@/types"
+
+import { CustomDropdownProps } from "@types"
 import Link from "next/link"
 import React from "react"
 

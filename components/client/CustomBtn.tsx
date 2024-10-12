@@ -1,9 +1,9 @@
 "use client"
-import { CustomBtnProps } from "@/types"
+import { CustomBtnProps } from "@types"
 
 /**
+ * Button Component for the whole App
  * @name {@link CustomBtn}
- * @description Button Component that for the whole application
  * @prop {`title`, `type`, `style`, `color`, `size`, `icon`, `onClick`, `loading`, `disable`, `children`, }: {@link CustomBtnProps}
  */
 const CustomBtn = ({
